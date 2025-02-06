@@ -67,6 +67,7 @@ form {
 input,
 button,
 select {
+	font: inherit;
 	font-size: 80%;
 	appearance: none;
 	transition: all 0.4s ease;
@@ -172,4 +173,93 @@ p {
 
 .menu li:has(.active) {
 	color: var(--blue-clr);
+}
+
+.header {
+	border-bottom: 1px solid var(--slate-gray);
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 20px;
+	align-items: center;
+}
+
+.header form {
+	position: relative;
+}
+
+.header form > input[type='text'] {
+	width: 80%;
+	font-size: 0.85rem;
+	border: 1px solid var(--very-light-pink);
+	padding: 0.6em 1em 0.6em 2.5em;
+	border-radius: 2em;
+	outline: none;
+}
+
+.header form i {
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.header form:has(:focus, :hover) input {
+	border-color: var(--blue-clr);
+}
+
+.header .profile {
+	padding-inline-end: 0.5em;
+	gap: 25px;
+}
+
+.profile img {
+	height: 2.75rem;
+}
+
+.profile i {
+	color: var(--text-clr);
+	font-size: 1.52rem;
+}
+
+.header i {
+	cursor: pointer;
+}
+
+.profile p {
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+.user-info p {
+	font-size: 0.9rem;
+}
+
+.user-info h3 {
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+.header > div:nth-child(2),
+.header > div:last-child {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.header > div:last-child {
+	gap: 15px;
+}
+
+.header > div button[type='button'] {
+	flex: 1;
+	min-width: fit-content;
+	padding: 0.6em 1.75em;
+	background-color: var(--blue-clr);
+	color: #fff;
+	border: 0;
+	border-radius: 2em;
+}
+
+.header > div button[type='button']:hover {
+	opacity: 0.8;
 }
