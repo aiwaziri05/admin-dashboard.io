@@ -18,6 +18,7 @@
 	--text-clr: hsl(0, 0%, 20%);
 	--blue-clr: hsl(199, 63%, 60%);
 	--background-clr: hsl(240, 29%, 97%);
+	--very-light-orange: hsl(33, 89%, 93%);
 }
 
 html {
@@ -176,7 +177,7 @@ p {
 }
 
 .header {
-	border-bottom: 1px solid var(--slate-gray);
+	/* border-bottom: 1px solid var(--slate-gray); */
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	gap: 20px;
@@ -190,10 +191,12 @@ p {
 .header form > input[type='text'] {
 	width: 80%;
 	font-size: 0.85rem;
-	border: 1px solid var(--very-light-pink);
-	padding: 0.6em 1em 0.6em 2.5em;
+	background-color: transparent;
+	border: 0;
+	outline: 0.1em solid var(--black-clr);
+	outline-offset: 2px;
+	padding: 0.5em 1em 0.5em 2.5em;
 	border-radius: 2em;
-	outline: none;
 }
 
 .header form i {
@@ -204,7 +207,7 @@ p {
 }
 
 .header form:has(:focus, :hover) input {
-	border-color: var(--blue-clr);
+	outline-color: var(--blue-clr);
 }
 
 .header .profile {
@@ -214,6 +217,22 @@ p {
 
 .profile img {
 	height: 2.75rem;
+}
+
+.profile a {
+	position: relative;
+}
+
+.profile a::before {
+	content: '';
+	width: 0.35em;
+	height: 0.35em;
+	background-color: hsl(19, 96%, 51%);
+	display: block;
+	position: absolute;
+	right: -2px;
+	top: 3px;
+	border-radius: 50%;
 }
 
 .profile i {
@@ -254,12 +273,138 @@ p {
 	flex: 1;
 	min-width: fit-content;
 	padding: 0.6em 1.75em;
-	background-color: var(--blue-clr);
-	color: #fff;
 	border: 0;
 	border-radius: 2em;
 }
 
-.header > div button[type='button']:hover {
-	opacity: 0.8;
+.header > div button[type='button']:first-child {
+	color: var(--text-clr);
+	background-color: var(--very-light-pink);
+}
+
+.header > div button[type='button']:nth-child(2) {
+	background-color: var(--very-light-green);
+}
+
+.header > div button[type='button']:last-child {
+	background-color: var(--very-light-orange);
+}
+
+.main .content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 12.5rem repeat(2, 6.5rem) 12.5rem;
+	gap: 20px;
+}
+
+.content .card {
+	background-color: white;
+	padding: 1rem;
+	border-radius: 0.5em;
+	display: flex;
+	flex-direction: column;
+}
+
+.card img {
+	height: 45px;
+}
+
+.content .card:first-child {
+	background-color: var(--very-light-blue);
+}
+
+.content .card:nth-child(2) {
+	background-color: var(--very-light-pink);
+}
+
+.content .card:nth-child(6) {
+	background-color: var(--very-light-green);
+	grid-column: 3;
+	grid-row: 1 / span 2;
+}
+
+.content .card:nth-child(5) {
+	grid-row: 2 / span 2;
+	background-color: var(--very-light-green);
+}
+
+.content .card:nth-child(3) {
+	grid-column: 2;
+	grid-row: 2 / span 2;
+}
+
+.content .card:nth-child(4) {
+	background-color: var(--very-light-blue);
+	grid-column: 1 / span 2;
+}
+
+.content .card:last-child {
+	background-color: var(--very-light-pink);
+	grid-column: 3;
+	grid-row: 3 / span 2;
+}
+
+.card h3 {
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+}
+
+.card p {
+	font-size: 0.85rem;
+	line-height: 1.6;
+}
+
+.card div:last-child {
+	margin-top: auto;
+	align-self: end;
+
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.content .card:nth-child(6) div:last-child,
+.content .card:last-child div:last-child {
+	all: unset;
+}
+
+.card:nth-child(6) > div {
+	margin-bottom: 0.75rem;
+	padding-block: 0.75em;
+}
+
+.card:nth-child(6) h4 {
+	font-size: 0.85rem;
+	font-weight: 500;
+	margin-bottom: 0.25rem;
+}
+
+.card:nth-child(6) p {
+	font-size: 0.75rem;
+}
+
+.main .content .card:last-child > div {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 0.75em 0;
+	/* margin-bottom: 12px; */
+}
+
+.main .content .card:last-child > div p {
+	font-size: 0.75rem;
+	font-weight: 400;
+	margin-bottom: 0.125em;
+}
+
+.main .content .card:last-child > div p:first-child {
+	font-weight: 500;
+}
+
+.content .card div:last-child a {
+	transition: all 0.4s ease;
+}
+
+.content .card div:last-child a:hover {
+	color: var(--blue-clr);
 }
