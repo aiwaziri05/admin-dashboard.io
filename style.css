@@ -16,6 +16,8 @@
 	--light-orange: hsl(32.73, 89.19%, 92.75%);
 	--black-clr: hsl(0, 0%, 6%);
 	--text-clr: hsl(0, 0%, 20%);
+	--blue-clr: hsl(199, 63%, 60%);
+	--background-clr: hsl(240, 29%, 97%);
 }
 
 html {
@@ -24,9 +26,11 @@ html {
 }
 
 body {
-	margin: 0;
-	background: var(--slate-gray);
+	min-height: 100vh;
+	background: var(--background-clr);
 	color: var(--text-clr);
+	display: grid;
+	grid-template-columns: auto 1fr;
 }
 
 h1,
@@ -40,9 +44,15 @@ h6 {
 	margin: 0;
 }
 
-ul[role='list'] {
+ul[role='navigation'] {
 	list-style: none;
 	padding-inline: 0;
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration-line: none;
 }
 
 img {
@@ -59,8 +69,107 @@ button,
 select {
 	font-size: 80%;
 	appearance: none;
+	transition: all 0.4s ease;
+}
+
+button {
+	cursor: pointer;
 }
 
 p {
 	margin: 0;
+}
+
+.sidebar,
+.header,
+.content {
+	padding: 1rem;
+}
+
+.sidebar {
+	width: 17rem;
+	height: 100vh;
+	position: sticky;
+	top: 0;
+	align-self: start;
+	border-right: 1px solid var(--slate-gray);
+	background: linear-gradient(var(--very-light-blue), var(--very-light-pink));
+}
+
+.sidebar > div {
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto repeat(2, 1fr);
+}
+
+.sidebar .top,
+.sidebar .menu {
+	/* background-color: red; */
+}
+
+.sidebar .top {
+	display: flex;
+	justify-content: end;
+	gap: 1rem;
+}
+
+.top h3 {
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+
+.top button[type='button'] {
+	background: transparent;
+	flex-shrink: 0;
+	min-width: fit-content;
+	padding: 0.25em 0.75em;
+	border: 0;
+	border-radius: 0.25em;
+}
+
+.top button[type='button'] i {
+	font-size: 1.5rem;
+}
+
+.top button[type='button']:hover {
+	background-color: var(--very-light-pink);
+}
+
+.sidebar .menu {
+	padding-block: 0.5rem;
+}
+
+.menu li:first-child {
+	font-size: 0.8rem;
+	color: var(--blue-clr);
+	padding: 0.25em 0;
+}
+
+.menu li * {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0.2em 0;
+	margin-bottom: 5px;
+}
+
+.menu li a * {
+	transition: color 0.4s ease;
+}
+
+.menu li a span {
+	flex: 1;
+	font-size: 0.85rem;
+}
+
+.menu li a i {
+	font-size: 1.25rem;
+}
+
+.menu li a:hover {
+	color: var(--blue-clr);
+}
+
+.menu li:has(.active) {
+	color: var(--blue-clr);
 }
